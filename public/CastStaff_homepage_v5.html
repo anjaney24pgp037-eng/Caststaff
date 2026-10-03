@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CastStaff | AI and data systems cast to last</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<style>
+:root{--bg:#E8EDF2;--panel:#F7F9FB;--ink:#0B1426;--mute:#4A5870;--line:#C3CDD9;--acc:#2B3BFF;--on:#fff;--hi:#BFF0D8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1322;--panel:#121C31;--ink:#EAF0F8;--mute:#9AA8C0;--line:#26344F;--acc:#8EA0FF;--on:#0C1322;--hi:#1E4D3C}}
+:root[data-theme="dark"]{--bg:#0C1322;--panel:#121C31;--ink:#EAF0F8;--mute:#9AA8C0;--line:#26344F;--acc:#8EA0FF;--on:#0C1322;--hi:#1E4D3C}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Archivo",system-ui,"Segoe UI",Arial,sans-serif}
+.w{max-width:1160px;margin:0 auto;padding:0 24px}
+a{color:inherit}a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.btn{display:inline-block;padding:14px 22px;border-radius:4px;background:var(--acc);color:var(--on);font:600 16px "Archivo",sans-serif;text-decoration:none;border:0;cursor:pointer}
+.btn.g{background:none;color:inherit;border:1.5px solid currentColor}
+/* hero: always dark */
+.hero{background:#0A1230;color:#EAF0F8;position:relative;overflow:hidden;
+background-image:linear-gradient(rgba(142,160,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(142,160,255,.09) 1px,transparent 1px);background-size:44px 44px}
+.hero .btn{background:#8EA0FF;color:#0A1230}.hero .btn.g{background:none;color:#EAF0F8}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font-stretch:125%;font-weight:800;font-size:21px}.logo i{font-style:normal;color:#7CF0C8}
+nav a{text-decoration:none;margin-left:24px;font-size:15px}nav a.btn{padding:10px 16px;font-size:15px}
+.hg{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:48px 0 96px}
+h1{font-stretch:125%;font-weight:900;font-size:clamp(40px,6vw,76px);line-height:.98;letter-spacing:-.03em;margin:0 0 24px}
+.lead{font-size:19px;max-width:32em;margin:0 0 30px;opacity:.82}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.diag{width:100%;height:auto}
+.diag rect{fill:#121C45;stroke:#8EA0FF;stroke-width:1.5}.diag .k rect{fill:#8EA0FF}
+.diag text{fill:#EAF0F8;font:600 15px "Archivo",sans-serif}.diag .k text{fill:#0A1230}.diag .s{font-weight:400;font-size:11px;opacity:.7}
+.diag path{fill:none;stroke:#7CF0C8;stroke-width:2;stroke-dasharray:6 8;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-28}}
+.tags{display:flex;gap:10px;overflow:hidden;padding:18px 0;border-bottom:1px solid var(--line)}
+.tags div{display:flex;gap:10px;flex:none;animation:slide 40s linear infinite}
+.tags span{padding:6px 14px;border:1px solid var(--line);border-radius:99px;font-size:14px;color:var(--mute);white-space:nowrap}
+@keyframes slide{to{transform:translateX(-100%)}}
+section{padding:84px 0;border-bottom:1px solid var(--line)}
+h2{font-stretch:115%;font-weight:800;font-size:clamp(28px,3.8vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;max-width:17em}
+.sub{color:var(--mute);max-width:36em;margin:0 0 40px}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--panel);border:1.5px solid var(--line);border-radius:8px;padding:28px}
+.card h3{margin:0 0 10px;font-stretch:112%;font-size:22px}.card p{margin:0;color:var(--mute)}
+.card ul{margin:14px 0 0;padding-left:18px;color:var(--mute)}
+.c2{grid-column:span 2}.pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}.pri p,.pri ul{color:inherit;opacity:.8}
+.assess{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.q{background:var(--panel);border:1.5px solid var(--ink);border-radius:8px;padding:8px 24px 24px}
+.q label{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.q input{width:20px;height:20px;accent-color:var(--acc);flex:none;margin-top:3px}
+.meter{height:10px;background:var(--line);border-radius:2px;margin:20px 0 12px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--acc);transition:width .3s}
+#res{margin:0 0 16px;font-weight:600}
+.tl{border-left:2px solid var(--acc);margin-left:8px;padding-left:32px;display:grid;gap:28px;max-width:720px}
+.tl div{position:relative}.tl div:before{content:"";position:absolute;left:-41px;top:7px;width:14px;height:14px;background:var(--bg);border:3px solid var(--acc);border-radius:50%}
+.tl b{color:var(--acc);font-size:14px}.tl h3{margin:2px 0 4px;font-size:21px}.tl p{margin:0;color:var(--mute)}
+.pr{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}.pr h3{font-size:20px;margin:0 0 8px;font-stretch:112%}.pr p{margin:0;color:var(--mute)}
+.cs{border:1.5px dashed var(--mute);border-radius:8px;padding:32px;display:flex;justify-content:space-between;gap:24px;align-items:center;flex-wrap:wrap}
+.cs p{margin:0;max-width:34em;color:var(--mute)}
+details{border-top:1px solid var(--line);padding:16px 0;max-width:760px}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font-weight:600;cursor:pointer}details p{color:var(--mute);margin:10px 0 0}
+.ct{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px}
+form{display:grid;gap:12px}
+input,textarea{width:100%;padding:13px;border:1.5px solid var(--line);border-radius:4px;background:var(--panel);color:var(--ink);font:inherit}
+.cred{margin:-8px 0 24px;max-width:32em;font-size:15px;color:#7CF0C8}
+.co{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 20px}.co span{padding:12px 20px;border:1.5px solid var(--ink);border-radius:4px;background:var(--panel);font-weight:700;font-stretch:112%;font-size:18px}
+.note{font-size:14px;color:var(--mute);margin:0}
+.hf{display:grid;gap:10px;max-width:470px}.hf input,.hf textarea{background:#121C45;border-color:#3A4A8A;color:#EAF0F8}.hf .r2{display:flex;gap:18px;flex-wrap:wrap;align-items:center}.hf a{font-size:15px}
+.sf{display:grid;grid-template-columns:1fr 1fr;gap:32px 48px}.sf div{border-left:3px solid var(--acc);padding-left:20px}.sf h3{margin:0 0 6px;font-size:20px;font-stretch:112%}.sf p{margin:0;color:var(--mute)}
+footer{padding:32px 0;color:var(--mute);font-size:14px}
+@media (max-width:900px){.hg,.assess,.ct,.pr,.sf{grid-template-columns:1fr}.bento{grid-template-columns:1fr 1fr}.c2{grid-column:span 2}nav a.h{display:none}}
+@media (max-width:560px){.bento{grid-template-columns:1fr}.c2{grid-column:auto}}
+@media (prefers-reduced-motion:reduce){.diag path,.tags div{animation:none}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="w">
+<nav><span class="logo">Cast<i>Staff</i></span><span><a class="h" href="#build">Services</a><a class="h" href="#assess">Readiness check</a><a class="h" href="#team">Team</a><a class="h" href="#faq">FAQ</a><a class="btn" href="#call">Book a call</a></span></nav>
+<div class="hg">
+<div>
+<h1>We cast AI systems that stay.</h1>
+<p class="lead">We design, build and evaluate LLM applications and data foundations for startups and scale-ups, then hand over systems your team owns and can keep running.</p>
+<p class="cred">Founded by IIT and IIM alumni who have built and shipped at IBM, Flipkart, Walmart, Microsoft, Lowe's and Coursera.</p>
+<form class="hf"><input name="e" type="email" placeholder="Work email" aria-label="Work email" required><textarea name="m" rows="2" placeholder="What are you trying to build or fix with AI?" aria-label="What are you building"></textarea><div class="r2"><button class="btn" type="submit">Book a discovery call</button><a href="#assess">or try the free AI assessment</a></div></form>
+</div>
+<svg class="diag" viewBox="0 0 560 340" role="img" aria-label="Diagram: your data flows through retrieval and pipelines into a model, monitored by evaluations">
+<path d="M150 170C185 170 185 76 215 76"/><path d="M150 170C185 170 185 264 215 264"/>
+<path d="M345 76C380 76 380 170 410 170"/><path d="M345 264C380 264 380 170 410 170"/><path d="M475 196V270"/>
+<g><rect x="20" y="144" width="130" height="52" rx="6"/><text x="36" y="167">Your data</text><text class="s" x="36" y="184">docs, DBs, APIs</text></g>
+<g><rect x="215" y="50" width="130" height="52" rx="6"/><text x="231" y="73">Retrieval</text><text class="s" x="231" y="90">search + rerank</text></g>
+<g><rect x="215" y="238" width="130" height="52" rx="6"/><text x="231" y="261">Pipelines</text><text class="s" x="231" y="278">clean, version</text></g>
+<g class="k"><rect x="410" y="144" width="130" height="52" rx="6"/><text x="426" y="167">Model</text><text class="s" x="426" y="184">prompts, tools</text></g>
+<g><rect x="410" y="270" width="130" height="52" rx="6"/><text x="426" y="293">Evals</text><text class="s" x="426" y="310">quality, cost</text></g>
+</svg>
+</div></div></div>
+
+<div class="w"><div class="tags" aria-hidden="true"><div><span>RAG systems</span><span>Agents and tool use</span><span>Evaluation suites</span><span>Fine-tuning</span><span>Data pipelines</span><span>Vector search</span><span>LLMOps</span><span>Governance</span></div><div><span>RAG systems</span><span>Agents and tool use</span><span>Evaluation suites</span><span>Fine-tuning</span><span>Data pipelines</span><span>Vector search</span><span>LLMOps</span><span>Governance</span></div></div></div>
+
+<section id="build"><div class="w">
+<h2>What we build</h2><p class="sub">Two core offers, backed by the data and evaluation work that makes them reliable.</p>
+<div class="bento">
+<div class="card c2 pri"><h3>Custom AI and LLM solutions</h3><p>Copilots, retrieval systems and agents built on your data, with the model chosen for the job and tested on your own cases.</p><ul><li>Code and prompts you own</li><li>Cost and latency budgets from day one</li><li>Guardrails and fallbacks</li></ul></div>
+<div class="card c2"><h3>AI strategy and roadmaps</h3><p>A ranked view of where AI pays off in your product and operations, and what to build in the next two quarters.</p><ul><li>Use-case scoring by value and effort</li><li>Build, buy or fine-tune decisions</li><li>Team and tooling plan</li></ul></div>
+<div class="card c2"><h3>Data foundations</h3><p>Pipelines, warehouses and quality checks so models get clean, current inputs.</p></div>
+<div class="card c2"><h3>Evaluation and LLMOps</h3><p>Test sets, regression checks and monitoring that catch quality drops before users do.</p></div>
+</div></div></section>
+
+<section id="assess"><div class="w assess">
+<div><h2>Free AI readiness assessment</h2><p class="sub">A free 60-minute session with a senior engineer. You leave with a one-page written plan: your top three use cases ranked by value and effort, the data gaps to close, and a recommended first build. Try the quick self-check to see where you stand.</p>
+<a class="btn" href="#call">Book your free assessment</a></div>
+<div class="q" id="quiz">
+<label><input type="checkbox"> We have a specific workflow or product feature in mind</label>
+<label><input type="checkbox"> Our data is stored somewhere we can query it</label>
+<label><input type="checkbox"> We can name a metric AI should move</label>
+<label><input type="checkbox"> An engineer can own the result after handover</label>
+<label><input type="checkbox"> We have real examples to test against</label>
+<div class="meter"><i id="bar"></i></div>
+<p id="res" aria-live="polite">Score: 0 of 5. Tick the statements that apply.</p>
+</div></div></section>
+
+<section><div class="w"><h2>How an engagement runs</h2><p class="sub">Short cycles, working software at every step.</p>
+<div class="tl">
+<div><b>Week 1</b><h3>Discover</h3><p>We map goals, data and constraints, and agree how success will be measured.</p></div>
+<div><b>Weeks 2 to 3</b><h3>Prototype</h3><p>A working slice tested on real inputs, so risks show up early.</p></div>
+<div><b>Weeks 4 to 8</b><h3>Build</h3><p>The production system, with evaluations, monitoring and documentation.</p></div>
+<div><b>After launch</b><h3>Improve</h3><p>We track quality and cost, then tune. Your team can take over at any point.</p></div>
+</div></div></section>
+
+<section><div class="w"><h2>How we work</h2><br>
+<div class="pr">
+<div><h3>Measure first</h3><p>No feature ships without a test set and a target. Quality is a number, not a feeling.</p></div>
+<div><h3>Cast to last</h3><p>Systems are tested, documented and handed over. Code, prompts, data and evals are yours, with no lock-in to us or to one model vendor.</p></div>
+<div><h3>Small and senior</h3><p>Experienced engineers do the work directly, with no layers between you and them.</p></div>
+</div></div></section>
+
+<section id="team"><div class="w"><h2>IIT and IIM alumni who cast systems that stay.</h2><p class="sub">Like a casting, a system should hold its shape under load and long after it leaves our hands. Between us we have worked on large products and platforms at:</p>
+<div class="co"><span>IBM</span><span>Flipkart</span><span>Walmart</span><span>Microsoft</span><span>Lowe's</span><span>Coursera</span></div>
+<p class="note">These are former employers of our team members, not client endorsements. You work directly with senior people from day one.</p>
+</div></section>
+
+<section><div class="w"><h2>How we build AI you can trust</h2><p class="sub">Early-stage teams still need production-grade safeguards. These come standard.</p>
+<div class="sf">
+<div><h3>Evaluations before launch</h3><p>A test set built from your real cases, with pass targets agreed up front and regression checks on every change.</p></div>
+<div><h3>Your data stays yours</h3><p>Work happens in your environment where possible, with least-privilege access and handling rules agreed before kickoff.</p></div>
+<div><h3>Guardrails and fallbacks</h3><p>Input and output checks, safe refusals, and human review where the stakes call for it.</p></div>
+<div><h3>Cost and latency budgets</h3><p>Per-request spend and response times are tracked from the prototype onwards, so there are no surprises at scale.</p></div>
+</div></div></section>
+
+<section><div class="w"><h2>Case studies</h2><p class="sub">We are a new company, so we are not padding this page.</p>
+<div class="cs"><p>Our first engagements are in progress. We will publish results here once clients approve. On a discovery call we can walk through how we would approach your problem.</p><a class="btn g" href="#call">Talk to us</a></div></div></section>
+
+<section id="faq"><div class="w"><h2>Questions we hear</h2><br>
+<details><summary>Which models and tools do you use?</summary><p>Whatever fits: hosted APIs, open-weight models or a mix. We test several on your data before committing.</p></details>
+<details><summary>How long until we see something working?</summary><p>Usually a prototype within two to three weeks of kickoff.</p></details>
+<details><summary>Do we need clean data first?</summary><p>Not necessarily. The assessment shows what is needed, and we often fix data in parallel.</p></details>
+<details><summary>What happens to our data?</summary><p>It stays in your environment wherever possible, and we agree handling rules before work starts.</p></details>
+</div></section>
+
+<section id="call" style="border:0"><div class="w ct">
+<div><h2>Tell us what you are building.</h2><p class="sub">A 30-minute discovery call. You describe the problem; we tell you honestly whether and how AI fits.</p></div>
+<form id="f"><input name="n" placeholder="Name" required><input name="e" type="email" placeholder="Work email" required><input name="c" placeholder="Company"><textarea name="m" rows="4" placeholder="What are you trying to solve?"></textarea><button class="btn" type="submit">Book a discovery call</button></form>
+</div></section>
+<div class="w"><footer>CastStaff. AI and data consulting.</footer></div>
+<script>
+var boxes=document.querySelectorAll('#quiz input'),msgs=['Start with strategy: a short assessment will find your best first use case.','Start with strategy: a short assessment will find your best first use case.','Close: a scoped prototype could prove value within weeks.','Close: a scoped prototype could prove value within weeks.','Ready to build: let us scope the first release.','Ready to build: let us scope the first release.'];
+function upd(){var s=0;boxes.forEach(function(b){if(b.checked)s++});document.getElementById('bar').style.width=s*20+'%';document.getElementById('res').textContent='Score: '+s+' of 5. '+(s?msgs[s]:'Tick the statements that apply.')}
+boxes.forEach(function(b){b.addEventListener('change',upd)});
+document.querySelectorAll('form').forEach(function(fm){fm.addEventListener('submit',function(ev){ev.preventDefault();var d=new FormData(ev.target);
+location.href='mailto:hello@caststaff.com?subject='+encodeURIComponent('Discovery call'+(d.get('c')?': '+d.get('c'):''))+'&body='+encodeURIComponent((d.get('m')||'')+'\n\n'+(d.get('n')||'')+' ('+d.get('e')+')')})});
+</script>
+</body>
+</html>

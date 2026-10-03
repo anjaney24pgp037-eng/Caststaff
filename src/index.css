@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #E8EDF2;
+  --panel: #F7F9FB;
+  --ink: #0B1426;
+  --mute: #4A5870;
+  --line: #C3CDD9;
+  --acc: #2B3BFF;
+  --on: #fff;
+}
+
+.dark {
+  --bg: #0C1322;
+  --panel: #121C31;
+  --ink: #EAF0F8;
+  --mute: #9AA8C0;
+  --line: #26344F;
+  --acc: #8EA0FF;
+  --on: #0C1322;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Archivo', system-ui, 'Segoe UI', Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@layer utilities {
+  .font-stretched {
+    font-stretch: 125%;
+  }
+  .font-wide {
+    font-stretch: 112%;
+  }
+  .font-wide-sm {
+    font-stretch: 115%;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mute);
+}
+
+/* Grid pattern background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(142, 160, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(142, 160, 255, 0.09) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-flow, .animate-slide {
+    animation: none;
+  }
+}

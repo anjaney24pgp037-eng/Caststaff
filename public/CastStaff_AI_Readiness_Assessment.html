@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CastStaff AI Readiness Assessment</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<style>
+:root{--bg:#EEF1F5;--panel:#FFFFFF;--ink:#0B1426;--mute:#4A5870;--line:#CBD3DE;--acc:#2B3BFF;--on:#fff;--hi:#DDE2FF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1322;--panel:#121C31;--ink:#EAF0F8;--mute:#9AA8C0;--line:#26344F;--acc:#8EA0FF;--on:#0C1322;--hi:#1C2A55}}
+:root[data-theme="dark"]{--bg:#0C1322;--panel:#121C31;--ink:#EAF0F8;--mute:#9AA8C0;--line:#26344F;--acc:#8EA0FF;--on:#0C1322;--hi:#1C2A55}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Archivo",system-ui,"Segoe UI",Arial,sans-serif}
+.w{max-width:960px;margin:0 auto;padding:0 24px}
+header{padding:20px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.logo{font-stretch:125%;font-weight:800;font-size:20px}.logo i{font-style:normal;color:var(--acc)}
+h1{font-stretch:118%;font-weight:900;font-size:clamp(28px,4.4vw,44px);line-height:1.06;letter-spacing:-.02em;margin:28px 0 12px}
+h2{font-stretch:112%;font-weight:800;font-size:22px;margin:40px 0 12px;padding-top:12px;border-top:2px solid var(--ink)}
+h3{margin:0 0 4px;font-size:17px}p{margin:0 0 12px}.mute{color:var(--mute)}.sm{font-size:14px}
+button,input{font:inherit}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.btn{display:inline-block;padding:13px 22px;border-radius:3px;background:var(--acc);color:var(--on);font-weight:600;text-decoration:none;border:0;cursor:pointer}
+.btn.g{background:none;color:var(--ink);border:1.5px solid var(--ink)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:24px}
+.prog{height:6px;background:var(--line);overflow:hidden;margin-bottom:10px}.prog i{display:block;height:100%;background:var(--acc);transition:width .3s}
+.opts{display:grid;gap:8px;margin:18px 0}
+.opt{text-align:left;padding:13px 16px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);cursor:pointer}
+.opt:hover{border-color:var(--acc)}.opt.on{border-color:var(--acc);background:var(--hi)}
+.nav{display:flex;justify-content:space-between}
+.link{background:none;border:0;color:var(--mute);cursor:pointer;text-decoration:underline;padding:6px 0}
+.sum{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.big{font-stretch:125%;font-weight:900;font-size:72px;line-height:1}.big small{font-size:22px;color:var(--mute);font-weight:600}
+.lvl{display:inline-block;padding:3px 10px;border-radius:3px;background:var(--acc);color:var(--on);font-weight:700;font-size:13px}
+.two{display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:center}
+table{width:100%;border-collapse:collapse;font-size:14px}th{text-align:left;color:var(--mute);font-weight:600}
+td,th{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.map{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.st{border:1px solid var(--line);border-radius:4px;padding:12px;background:var(--panel);font-size:13px}
+.st b{display:block;font-size:15px;margin-bottom:3px}.st.cur{background:var(--acc);color:var(--on);border-color:var(--acc)}.st.nx{border:2px dashed var(--acc)}
+.tag{display:block;font-size:11px;font-weight:700;margin-bottom:5px;min-height:14px}
+.sol div{border-left:3px solid var(--acc);padding:2px 0 2px 14px;margin-bottom:10px}
+.rm{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.rm div{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:16px;font-size:14px}.rm b{display:block;color:var(--acc);margin-bottom:4px}
+.em{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.em input{flex:1;min-width:220px;padding:12px;border:1px solid var(--line);border-radius:3px;background:var(--bg);color:var(--ink)}
+details{margin-top:14px}summary{cursor:pointer;font-weight:600}
+footer{padding:36px 0;color:var(--mute);font-size:13px}
+@media (max-width:780px){.two,.sum{grid-template-columns:1fr}.map,.rm{grid-template-columns:1fr}.big{font-size:56px}}
+@media print{header .mute,.noprint{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="w">
+<header><span class="logo">Cast<i>Staff</i></span><span class="mute sm">AI Readiness Assessment</span></header>
+<main id="app"></main>
+<footer>CastStaff. This is an indicative self-assessment, scored on your own answers. The scale and structure follow common maturity-model practice. No peer benchmark is shown yet; we will add anonymised comparisons once we hold enough responses. Validate results in a working session before making investment decisions.</footer>
+</div>
+<script>
+var DIM=[['Strategy and value','Strategy',.2],['Data','Data',.2],['Technology and infrastructure','Technology',.15],['Talent and adoption','Talent',.15],['Governance and risk','Governance',.15],['AI in use and operations','Operations',.15]];
+var CTX=[{t:'Which area do you most want AI to improve?',o:['Customer support','Sales and marketing','Operations and back office','Our product','Analytics and decisions']},
+{t:'Where are you on the AI journey today?',o:['Not started','Running experiments','A pilot is live','In production']}];
+var SQ=[
+[0,'How well defined is the business case for AI?',['No defined case','Ideas listed, not prioritised','Prioritised use cases with estimated value','Funded use cases with owners and target KPIs']],
+[0,'How is AI aligned with company strategy?',['Not discussed by leadership','Discussed informally','Part of the annual plan','Tracked by leadership against outcomes']],
+[0,'What budget and delivery plan exist?',['None','Exploratory budget only','Budget for a first release','Multi-quarter budget and roadmap']],
+[1,'Where does the data for your priority use case live?',['Scattered across files and tools','Mostly in a few operational systems','Consolidated in a warehouse or lake','Governed, catalogued and owned by domain']],
+[1,'How would you rate its quality and documentation?',['Quality unknown','Known issues, little documentation','Quality monitored, partly documented','Quality targets and full lineage']],
+[1,'How do applications access the data?',['Manual exports','Reports and ad hoc queries','APIs or SQL for most sources','Versioned, tested pipelines']],
+[2,'What does your cloud and platform setup look like?',['Mostly on-premises or ad hoc','Cloud for some workloads','Cloud-native with standard environments','Infrastructure as code with CI/CD']],
+[2,'How would AI connect to your existing systems?',['No integration path yet','Possible through manual steps','APIs exist for key systems','API-first or event-driven architecture']],
+[2,'What tooling exists to build and deploy AI?',['None','Individual tools and notebooks','Shared tooling for experiments','Standard path from experiment to production']],
+[3,'What AI and data skills do you have in-house?',['None','A few people experimenting','A small dedicated team','Cross-functional team with MLOps or LLMOps skills']],
+[3,'Who will own the system after launch?',['Nobody identified','A part-time owner','A named engineering owner','Dedicated product and engineering ownership']],
+[3,'How ready are users to adopt AI in their workflow?',['Unaware or resistant','Curious, no training','Training and champions in place','Adoption tracked with feedback loops']],
+[4,'What security and privacy requirements apply?',['Not yet assessed','Assessed, not documented','Documented policies','Documented and reviewed by security or legal']],
+[4,'How would you evaluate model quality?',['No defined method','Manual spot checks','Test set with pass criteria','Automated evals and production monitoring']],
+[4,'How are AI risks handled (errors, bias, misuse)?',['Not considered','Handled case by case','Risk review before launch','Standing policy, human oversight and audit trail']],
+[5,'What AI do you use today?',['None','Individuals use public tools','Approved tools in some teams','AI embedded in products or core workflows']],
+[5,'How have past AI projects performed?',['No projects yet','Prototypes that stalled','Pilots that delivered value','Production systems with measured ROI']],
+[5,'How do you monitor cost, latency and quality in production?',['No AI in production','Not monitored','Basic dashboards','Alerts and regular optimisation']]];
+var Q=CTX.concat(SQ.map(function(q){return{d:q[0],t:q[1],o:q[2]}}));
+var LV=[['Nascent','Choose one use case and build leadership awareness.'],['Emerging','Prepare data and ownership before building.'],['Developing','Prototype in a controlled scope while closing gaps.'],['Established','Move pilots to production with evals and monitoring.'],['Leading','Scale across workflows and optimise cost and quality.']];
+var ACT=['Define a prioritised use case with a target KPI, budget and timeline.','Consolidate and document the data this use case needs, with reliable access.','Set up shared environments, integration APIs and a path to production.','Name an accountable owner, close skill gaps and plan user adoption.','Agree privacy rules, a risk review and an evaluation plan before building.','Instrument cost, latency and quality, and learn from earlier projects.'];
+var SOL={0:['Support copilot grounded in your help docs and tickets','Ticket triage and routing','Self-serve answer assistant with human escalation'],1:['Lead research and qualification agent','Proposal and email drafting grounded in your content','Call summaries that update the CRM'],2:['Document processing and data extraction','Workflow agents with human approval steps','Forecasting and anomaly alerts'],3:['In-product assistant','Semantic search and recommendations','Content generation with guardrails'],4:['Natural-language questions over your warehouse','Automated reporting and insights','Data quality monitoring']};
+var ST=[['Explore','Pick one use case and a success metric.'],['Prototype','A working slice on real data in 2 to 3 weeks.'],['Pilot','Real users, with evals and guardrails.'],['Production','Hardened, monitored, handed over.'],['Scale','More workflows, better quality, lower cost.']];
+var A=[],i=0,app=document.getElementById('app');
+function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function lv(p){return p>=80?4:p>=60?3:p>=40?2:p>=20?1:0}
+function intro(){app.innerHTML='<h1>AI Readiness Assessment</h1><p class="mute" style="max-width:40em">A structured review across six dimensions: strategy, data, technology, talent, governance and operations. You receive a 0 to 100 readiness score, a five-level maturity rating, a journey map, matched solutions and a 90-day plan. Twenty questions, about six minutes.</p><button class="btn" id="go">Begin assessment</button>';
+document.getElementById('go').onclick=function(){i=0;A=[];ask()}}
+function ask(){var q=Q[i],sec=q.d===undefined?'Context':'Section '+(q.d+1)+' of 6 · '+DIM[q.d][0];
+app.innerHTML='<div style="margin-top:28px" class="card"><div class="prog"><i style="width:'+(i/Q.length*100)+'%"></i></div><p class="mute sm">Question '+(i+1)+' of '+Q.length+' · '+sec+'</p><h2 style="border:0;padding:0;margin:4px 0 0">'+esc(q.t)+'</h2><div class="opts" role="radiogroup">'+q.o.map(function(o,n){return'<button class="opt'+(A[i]===n?' on':'')+'" role="radio" aria-checked="'+(A[i]===n)+'" data-n="'+n+'">'+esc(o)+'</button>'}).join('')+'</div><div class="nav"><button class="link" id="bk"'+(i?'':' style="visibility:hidden"')+'>Back</button><span class="mute sm">Select one to continue</span></div></div>';
+app.querySelectorAll('.opt').forEach(function(b){b.onclick=function(){A[i]=+b.dataset.n;i++;i<Q.length?ask():result()}});
+document.getElementById('bk').onclick=function(){i--;ask()}}
+function radar(P){var c=160,r=108,pts=function(f){return DIM.map(function(_,k){var a=(-90+k*60)*Math.PI/180;return(c+r*f(k)*Math.cos(a)).toFixed(1)+','+(c+r*f(k)*Math.sin(a)).toFixed(1)}).join(' ')},s='<svg viewBox="0 0 320 320" role="img" aria-label="Radar chart of six readiness dimensions" width="100%">';
+[.25,.5,.75,1].forEach(function(f){s+='<polygon points="'+pts(function(){return f})+'" fill="none" stroke="var(--line)"/>'});
+DIM.forEach(function(d,k){var a=(-90+k*60)*Math.PI/180,x=c+(r+22)*Math.cos(a),y=c+(r+22)*Math.sin(a),an=Math.cos(a)>.3?'start':Math.cos(a)<-.3?'end':'middle';
+s+='<line x1="'+c+'" y1="'+c+'" x2="'+(c+r*Math.cos(a)).toFixed(1)+'" y2="'+(c+r*Math.sin(a)).toFixed(1)+'" stroke="var(--line)"/><text x="'+x.toFixed(1)+'" y="'+(y+4).toFixed(1)+'" text-anchor="'+an+'" font-size="12" fill="var(--ink)">'+d[1]+'</text>'});
+return s+'<polygon points="'+pts(function(k){return P[k]/100})+'" fill="var(--acc)" fill-opacity=".25" stroke="var(--acc)" stroke-width="2"/></svg>'}
+function result(){var sum=[0,0,0,0,0,0];Q.forEach(function(q,n){if(q.d!==undefined)sum[q.d]+=A[n]});
+var P=sum.map(function(s){return Math.round(s/9*100)}),tot=0,low=0;
+P.forEach(function(p,k){tot+=p*DIM[k][2];if(p<P[low])low=k});
+var pct=Math.round(tot),L=lv(pct),focus=A[0],cur=A[1],nxt=Math.min(pct>=50?cur+1:cur,4);
+var rows=DIM.map(function(d,k){return'<tr><td><b>'+d[0]+'</b></td><td>'+P[k]+'</td><td>'+LV[lv(P[k])][0]+'</td><td class="mute">'+(P[k]<60?ACT[k]:'Solid foundation. Confirm with evidence in a working session.')+'</td></tr>'}).join('');
+var map=ST.map(function(s,n){var c=n===cur?' cur':n===nxt&&nxt!==cur?' nx':'';return'<div class="st'+c+'"><span class="tag">'+(n===cur?'You are here':c?'Next step':'')+'</span><b>'+s[0]+'</b>'+s[1]+'</div>'}).join('');
+var sol=SOL[focus].map(function(s,n){return'<div><h3>'+(n?'Then: ':'Start with: ')+esc(s)+'</h3></div>'}).join('');
+var p3=cur>=2?'Harden the pilot, add monitoring and cost controls, and plan handover.':'Run a pilot with a small group. Track quality, cost and latency, then decide on rollout.';
+var txt='Readiness: '+pct+'/100 ('+LV[L][0]+')\nFocus: '+Q[0].o[focus]+'\nJourney stage: '+ST[cur][0]+'\n'+DIM.map(function(d,k){return d[1]+': '+P[k]}).join('\n')+'\nBinding constraint: '+DIM[low][0];
+app.innerHTML='<h1>AI Readiness Report</h1><p class="mute sm">'+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})+' · Focus: '+esc(Q[0].o[focus])+' · Stage: '+ST[cur][0]+'</p>'
++'<div class="card sum"><div class="big">'+pct+'<small> / 100</small></div><div><span class="lvl">Level '+(L+1)+' · '+LV[L][0]+'</span><p style="margin:10px 0 6px"><b>Priority:</b> '+LV[L][1]+'</p><p class="mute sm" style="margin:0">Binding constraint: <b>'+DIM[low][0]+'</b> ('+P[low]+'). The weakest dimension limits how far the others can take you.</p></div></div>'
++'<h2>Readiness by dimension</h2><div class="two"><div>'+radar(P)+'</div><table><tr><th>Dimension</th><th>Score</th><th>Level</th><th>Finding</th></tr>'+rows+'</table></div>'
++'<h2>Position on the AI journey</h2><div class="map">'+map+'</div>'+(nxt===cur?'<p class="mute sm" style="margin-top:10px">Score is below the threshold for the next stage. Close the gaps above first.</p>':'')
++'<h2>Recommended solutions</h2><p class="mute sm">Matched to your focus on '+esc(Q[0].o[focus].toLowerCase())+'.</p><div class="sol">'+sol+'</div>'
++'<h2>First 90 days</h2><div class="rm"><div><b>Days 1 to 30</b>'+ACT[low]+'</div><div><b>Days 31 to 60</b>Prototype "'+esc(SOL[focus][0].toLowerCase())+'" on real data and build the evaluation set.</div><div><b>Days 61 to 90</b>'+p3+'</div></div>'
++'<details><summary>Methodology and limits</summary><p class="sm mute" style="margin-top:10px">Each answer scores 0 to 3. A dimension score is its three answers rescaled to 0 to 100. The overall score is a weighted average: strategy 20%, data 20%, technology 15%, talent 15%, governance 15%, operations 15%. Levels: Nascent 0 to 19, Emerging 20 to 39, Developing 40 to 59, Established 60 to 79, Leading 80 to 100. Results are self-reported and unaudited, so treat them as a starting hypothesis.</p></details>'
++'<h2>Next step</h2><div class="card noprint"><p>Review these results with a senior engineer in a free 60-minute session and leave with a one-page written plan.</p><div class="em"><input id="em" type="email" placeholder="Work email" aria-label="Work email"><button class="btn" id="bk2">Book my free assessment</button><button class="btn g" id="pr">Print or save as PDF</button></div></div>'
++'<p class="noprint" style="margin-top:14px"><button class="link" id="again">Start over</button></p>';
+document.getElementById('bk2').onclick=function(){location.href='mailto:hello@caststaff.com?subject='+encodeURIComponent('AI readiness: '+pct+'/100')+'&body='+encodeURIComponent(txt+'\n\nContact: '+document.getElementById('em').value)};
+document.getElementById('pr').onclick=function(){window.print()};document.getElementById('again').onclick=intro;window.scrollTo(0,0)}
+intro();
+</script>
+</body>
+</html>
